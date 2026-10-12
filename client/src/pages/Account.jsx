@@ -6,6 +6,7 @@ import { useStore } from '../state/store.jsx';
 import ProductCard from '../components/ProductCard.jsx';
 import Icon from '../components/Icons.jsx';
 import { Button, Empty, Field, Spinner } from '../components/UI.jsx';
+import { site } from '../site.js';
 import { OrderDetail } from './Orders.jsx';
 
 export function Auth({ mode: initial = 'login' }) {
@@ -19,7 +20,7 @@ export function Auth({ mode: initial = 'login' }) {
   const next = params.get('next') || '/account';
   const safeNext = next.startsWith('/') && !next.startsWith('//') ? next : '/account';
 
-  useEffect(() => { document.title = `${mode === 'login' ? 'Sign in' : 'Create account'} | FORMO`; }, [mode]);
+  useEffect(() => { document.title = `${mode === 'login' ? 'Sign in' : 'Create account'} | ${site.name}`; }, [mode]);
   if (user) return <Navigate to={safeNext} replace />;
 
   const submit = async (e) => {
@@ -35,7 +36,7 @@ export function Auth({ mode: initial = 'login' }) {
   return (
     <div className="auth">
       <div className="auth-art" aria-hidden="true">
-        <span className="auth-mark">FORMO<i>.</i></span>
+        <span className="auth-mark">Oddly<span>1.s</span></span>
         <p>Keep track of orders, save the things you like, and check out faster.</p>
       </div>
       <div className="auth-panel">
@@ -50,7 +51,7 @@ export function Auth({ mode: initial = 'login' }) {
           <Button type="submit" className="btn-block" loading={busy}>{mode === 'login' ? 'Sign in' : 'Create account'}</Button>
         </form>
         <p className="muted center">
-          {mode === 'login' ? 'New to FORMO? ' : 'Already have an account? '}
+          {mode === 'login' ? `New to ${site.name}? ` : 'Already have an account? '}
           <button className="link-btn" onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); }}>
             {mode === 'login' ? 'Create an account' : 'Sign in'}
           </button>
@@ -160,7 +161,7 @@ export default function Account() {
   const { pathname } = useLocation();
   const tab = pathname.split('/')[2] || 'orders';
 
-  useEffect(() => { document.title = 'Your account | FORMO'; }, []);
+  useEffect(() => { document.title = `Your account | ${site.name}`; }, []);
   if (!authReady) return <div className="page-pad"><Spinner /></div>;
   if (!user && tab !== 'wishlist') return <Navigate to={`/login?next=${pathname}`} replace />;
 
@@ -187,4 +188,3 @@ export default function Account() {
     </div>
   );
 }
-

@@ -4,6 +4,7 @@ import { useStore } from '../state/store.jsx';
 import { Logo } from '../components/Layout.jsx';
 import Icon from '../components/Icons.jsx';
 import { Button, Field, Spinner } from '../components/UI.jsx';
+import { site } from '../site.js';
 import { Categories, Coupons, Customers, Dashboard, Ideas, Orders, ProductForm, Products, Reviews, Subscribers } from './pages.jsx';
 import './admin.css';
 
@@ -52,7 +53,7 @@ function AdminLogin() {
 export default function Admin() {
   const { user, authReady, signOut } = useStore();
   useEffect(() => {
-    document.title = 'Admin | FORMO';
+    document.title = `Admin | ${site.name}`;
     const meta = document.createElement('meta');
     meta.name = 'robots'; meta.content = 'noindex';
     document.head.appendChild(meta);

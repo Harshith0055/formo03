@@ -20,8 +20,8 @@ const NAV = [
 
 export function Logo({ className = '' }) {
   return (
-    <span className={`logo ${className}`} aria-label="FORMO">
-      FORM<span className="logo-o">O</span>
+    <span className={`logo ${className}`} aria-label={site.name}>
+      Oddly<span className="logo-accent">1.s</span>
     </span>
   );
 }
@@ -110,7 +110,7 @@ function Header() {
     <>
       <header className={`header ${scrolled ? 'is-scrolled' : ''} ${hidden && !menu ? 'is-hidden' : ''} ${menu ? 'menu-open' : ''}`}>
         <div className="header-inner">
-          <Link to="/" className="header-logo" aria-label="FORMO home"><Logo /></Link>
+          <Link to="/" className="header-logo" aria-label={`${site.name} home`}><Logo /></Link>
           <nav className="header-nav" aria-label="Main">
             {NAV.map((n) => <NavLink key={n.to} to={n.to} end className={`nav-link ${n.highlight ? 'nav-sticker' : ''}`}>{n.label}</NavLink>)}
           </nav>
@@ -169,7 +169,7 @@ function Footer() {
               <Link to="/shop?category=new">New</Link>
             </div>
             <div>
-              <h3>FORMO</h3>
+              <h3>{site.name}</h3>
               <Link to="/custom">Custom orders</Link>
               <a href={site.instagram} target="_blank" rel="noreferrer">Instagram</a>
             </div>

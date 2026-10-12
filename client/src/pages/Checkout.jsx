@@ -7,6 +7,7 @@ import { LineThumb, useShopConfig } from '../components/CartDrawer.jsx';
 import { lineLabel } from '../components/Options.jsx';
 import Icon from '../components/Icons.jsx';
 import { Button, Empty, Field } from '../components/UI.jsx';
+import { site } from '../site.js';
 
 const blankAddress = { line1: '', line2: '', landmark: '', city: '', state: '', pincode: '' };
 
@@ -42,7 +43,7 @@ export default function Checkout() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => { document.title = 'Checkout | FORMO'; }, []);
+  useEffect(() => { document.title = `Checkout | ${site.name}`; }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -95,7 +96,7 @@ export default function Checkout() {
         order_id: order.payment.razorpayOrderId,
         amount: Math.round(order.total * 100),
         currency: 'INR',
-        name: 'FORMO',
+        name: site.name,
         description: `Order ${order.number}`,
         prefill: { name: customer.name, email: order.email, contact: customer.phone },
         theme: { color: '#1C1B19' },

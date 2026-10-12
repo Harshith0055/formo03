@@ -70,7 +70,7 @@ export function OrderPlaced() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    document.title = 'Order placed | FORMO';
+    document.title = `Order placed | ${site.name}`;
     const key = orderKeys.get(number);
     api('/orders/lookup' + qs({ number, key })).then(setOrder).catch((e) => setError(e.message));
   }, [number]);
@@ -104,7 +104,7 @@ export function Track() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => { document.title = 'Track your order | FORMO'; }, []);
+  useEffect(() => { document.title = `Track your order | ${site.name}`; }, []);
   useEffect(() => { if (user && !email) setEmail(user.email); }, [user, email]);
 
   const submit = async (e) => {

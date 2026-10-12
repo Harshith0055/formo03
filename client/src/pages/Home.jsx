@@ -7,6 +7,7 @@ import ProductImage from '../components/ProductImage.jsx';
 import QuickView from '../components/QuickView.jsx';
 import Icon from '../components/Icons.jsx';
 import { Button } from '../components/UI.jsx';
+import { site } from '../site.js';
 
 const HERO_NAV = [
   ['Fidget & Flexi', '/shop?category=fidget'],
@@ -108,7 +109,7 @@ export default function Home() {
   const [qv, setQv] = useState(null);
 
   useEffect(() => {
-    document.title = 'FORMO | Fun things & toys, made your way';
+    document.title = `${site.name} | Fun things & toys, made your way`;
     api('/products').then(setProducts).catch(() => {});
     api('/categories').then(setCategories).catch(() => {});
   }, []);

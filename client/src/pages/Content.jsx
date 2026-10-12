@@ -4,7 +4,7 @@ import { site } from '../site.js';
 import IdeaForm from '../components/IdeaForm.jsx';
 import { Button } from '../components/UI.jsx';
 
-const useTitle = (t) => useEffect(() => { document.title = `${t} | FORMO`; }, [t]);
+const useTitle = (t) => useEffect(() => { document.title = `${t} | ${site.name}`; }, [t]);
 
 export function Custom() {
   useTitle('Custom orders');
@@ -43,7 +43,7 @@ function Legal({ title, children }) {
 export function Privacy() {
   return (
     <Legal title="Privacy Policy">
-      <p>This policy explains what personal data {site.legalName} ("FORMO", "we") collects when you use {site.domain}, why, and the choices you have. We follow the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
+      <p>This policy explains what personal data {site.legalName} ("{site.name}", "we") collects when you use {site.domain}, why, and the choices you have. We follow the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
       <h2>What we collect</h2>
       <ul>
         <li><strong>Account details:</strong> name, email, mobile number and password (stored only as a secure hash).</li>
@@ -70,7 +70,7 @@ export function Privacy() {
 export function Terms() {
   return (
     <Legal title="Terms and Conditions">
-      <p>These terms apply when you buy from {site.legalName} ("FORMO", "we") on {site.domain}. By placing an order you agree to them.</p>
+      <p>These terms apply when you buy from {site.legalName} ("{site.name}", "we") on {site.domain}. By placing an order you agree to them.</p>
       <h2>Our toys</h2>
       <p>Our toys are 3D printed to order. Fine layer lines and small differences in colour between batches are normal and are not defects. Photos and colour swatches are as accurate as we can make them, but screens vary.</p>
       <h2>Safety</h2>

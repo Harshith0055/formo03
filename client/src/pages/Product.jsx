@@ -9,6 +9,7 @@ import Options, { optionPrice } from '../components/Options.jsx';
 import { Qty, useShopConfig } from '../components/CartDrawer.jsx';
 import Icon from '../components/Icons.jsx';
 import { Button, Empty, Field, Spinner, Stars } from '../components/UI.jsx';
+import { site } from '../site.js';
 
 function Gallery({ p }) {
   const [i, setI] = useState(0);
@@ -85,7 +86,7 @@ export default function Product() {
       setSize(d.product.sizes?.[0]?.label ?? null);
     }).catch((e) => setError(e.message));
   }, [slug]);
-  useEffect(() => { if (data) document.title = `${data.product.name} | FORMO`; }, [data]);
+  useEffect(() => { if (data) document.title = `${data.product.name} | ${site.name}`; }, [data]);
 
   if (error) return <div className="wrap page-pad"><Empty title="We could not find that toy." action={<Button to="/shop">Back to shop</Button>} /></div>;
   if (!data) return <div className="page-pad"><Spinner /></div>;

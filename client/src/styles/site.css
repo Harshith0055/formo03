@@ -25,8 +25,7 @@
 }
 
 .logo { position: relative; display: inline-block; font: 800 22px/1 var(--display); font-stretch: 125%; letter-spacing: -0.03em; }
-.logo-o { position: relative; }
-.logo-o::after { content: ''; position: absolute; right: -0.28em; bottom: 0.02em; width: 0.2em; height: 0.2em; background: var(--accent); }
+.logo-accent { color: var(--accent); }
 
 .mobile-menu { position: fixed; inset: 0; z-index: 90; background: var(--paper); padding: calc(var(--header-h) + 24px) var(--gutter) 32px; display: flex; flex-direction: column; justify-content: space-between; visibility: hidden; opacity: 0; transition: opacity 0.35s, visibility 0.35s; }
 .mobile-menu.is-open { visibility: visible; opacity: 1; }
@@ -461,7 +460,7 @@
 @media (max-width: 860px) { .custom-grid { grid-template-columns: 1fr; } }
 
 .auth-mark { font: 800 clamp(48px, 7vw, 96px)/1 var(--display); font-stretch: 125%; letter-spacing: -0.04em; }
-.auth-mark i { font-style: normal; color: var(--accent); }
+.auth-mark span { color: var(--accent); }
 .notfound { text-align: center; display: grid; justify-items: center; gap: 12px; }
 
 /* ================================================================== ink cursor */

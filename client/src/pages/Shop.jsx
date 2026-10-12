@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard.jsx';
 import QuickView from '../components/QuickView.jsx';
 import Icon from '../components/Icons.jsx';
 import { Empty, Spinner } from '../components/UI.jsx';
+import { site } from '../site.js';
 
 const SORTS = [
   ['featured', 'Featured'],
@@ -68,7 +69,7 @@ export default function Shop() {
   }, [products]);
 
   const current = categories.find((c) => c.slug === category);
-  useEffect(() => { document.title = `${current ? current.name : 'Shop'} | FORMO`; }, [current]);
+  useEffect(() => { document.title = `${current ? current.name : 'Shop'} | ${site.name}`; }, [current]);
   const activeFilters = (min || max ? 1 : 0) + (inStock ? 1 : 0);
 
   return (
